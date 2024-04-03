@@ -11,6 +11,7 @@ const TotalsComponent = () => {
 
   const [tipAmount, setTipAmount] = useState<number>(0);
   const [totalAmount, setTotalAmount] = useState<number>(0);
+  const [className, setClassName] = useState<string>('w-[full] h-[45px] bg-[#0d686d] cursor-pointer flex justify-center items-center text-xl text-VeryDarkCyan active:bg-ActiveButton hover:bg-ActiveButton')
 
   const clickHandle = () => {
     data.setBill(0);
@@ -21,6 +22,13 @@ const TotalsComponent = () => {
 
 
   useEffect(() => {
+    if ((data.tip != undefined) || (data.bill != 0) || (data.groupSize != 0)) {
+      setClassName('w-[full] h-[45px] bg-StrongCyan cursor-pointer flex justify-center items-center text-xl text-VeryDarkCyan active:bg-ActiveButton hover:bg-ActiveButton')
+    } else {
+      setClassName('w-[full] h-[45px] bg-[#0d686d] cursor-pointer flex justify-center items-center text-xl text-VeryDarkCyan active:bg-ActiveButton hover:bg-ActiveButton')
+    }
+
+
     if ((data.tip != undefined) && (data.bill != 0) && (data.groupSize != 0)) {
       const theTip = data.tip * data.bill / 100;
       setTipAmount(theTip / data.groupSize)
@@ -55,7 +63,7 @@ const TotalsComponent = () => {
         </div>
       </div>
 
-      <div className='w-[full] h-[45px] bg-[#0d686d] cursor-pointer flex justify-center items-center text-xl text-VeryDarkCyan active:bg-ActiveButton hover:bg-ActiveButton'
+      <div className={className}
         onClick={clickHandle}
       >
         RESET
