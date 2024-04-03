@@ -1,6 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/context/Context'
+import { hasTrailingDecimal, isValidNumber } from '@/utils/utilities';
 import React, { useEffect, useState } from 'react'
 
 
@@ -15,14 +16,27 @@ const CustomButtonComponent = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    if (!isNaN(Number(e.target.value))) {
-      setTip(Number(e.target.value));
-    }else{
-      if(isCustom){
-        (tip != undefined) ? setValue(String(tip)) : setValue("");
+    let currentValue = e.target.value;
+    if (currentValue.length < 8) {
+      if (isValidNumber(currentValue)) {
+        setValue(currentValue);
+        setTip(Number(currentValue));
+      } else if (hasTrailingDecimal(currentValue)) {
+        setValue(currentValue);
+      } else if (currentValue == "") {
+        setValue("");
       }
     }
+
+
+    // setValue(e.target.value);
+    // if (!isNaN(Number(e.target.value))) {
+    //   setTip(Number(e.target.value));
+    // }else{
+    //   if(isCustom){
+    //     (tip != undefined) ? setValue(String(tip)) : setValue("");
+    //   }
+    // }
   };
 
   useEffect(() => {
