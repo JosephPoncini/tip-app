@@ -1,14 +1,39 @@
 'use client'
 
-import React from 'react'
+import { useAppContext } from '@/context/Context';
+import React, { useEffect, useState } from 'react'
 
 interface ITipButton {
-    value: number
+  value: number
 }
 
-const TipButtonComponent = ( props:ITipButton) => {
+const TipButtonComponent = (props: ITipButton) => {
+
+  const {tip, setTip, isCustom, setIsCustom} = useAppContext();
+
+  const handleTip = () => {
+    setIsCustom(false);    
+    if (tip == props.value) {
+      setTip(undefined);
+    } else {
+      setTip(props.value)
+    }
+
+  }
+
+  const [myClassName, setMyClassName] = useState<string>('active:bg-ActiveButton active:text-VeryDarkCyan hover:bg-LightGrayishCyan hover:text-VeryDarkCyan w-[100%] h-[50px] cursor-pointer rounded font-SpaceMonoBold text-2xl flex justify-center items-center bg-StrongCyan text-VeryDarkCyan');
+
+  useEffect(() => {
+    if (tip == props.value && !isCustom) {
+    setMyClassName('active:bg-ActiveButton active:text-VeryDarkCyan hover:bg-LightGrayishCyan hover:text-VeryDarkCyan w-[100%] h-[50px] cursor-pointer rounded font-SpaceMonoBold text-2xl flex justify-center items-center bg-StrongCyan text-VeryDarkCyan')
+  } else {
+    setMyClassName('active:bg-ActiveButton active:text-VeryDarkCyan hover:bg-LightGrayishCyan hover:text-VeryDarkCyan w-[100%] h-[50px] cursor-pointer rounded font-SpaceMonoBold text-2xl flex justify-center items-center bg-VeryDarkCyan text-VeryLightGrayishCyan')
+  }    
+  },[tip, isCustom])
+
+
   return (
-    <div className=' bg-VeryDarkCyan w-[100%] h-[50px] cursor-pointer rounded text-VeryLightGrayishCyan font-SpaceMonoBold text-2xl flex justify-center items-center'>{props.value}%</div>
+    <div onClick={handleTip} className={myClassName}>{props.value}%</div>
   )
 }
 

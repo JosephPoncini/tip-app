@@ -26,7 +26,8 @@ const config: Config = {
         LightGrayishCyan: 'hsl(185, 41%, 84%)',
         VeryLightGrayishCyan: 'hsl(189, 41%, 97%)',
         White: 'hsl(0, 0%, 100%)',
-        GreyText: 'hsl(177, 12%, 66%)'
+        GreyText: 'hsl(177, 12%, 66%)',
+        ActiveButton:'hsl(173, 61%, 77%)'
       },
       fontFamily: {
         SpaceMonoRegular: 'SpaceMono-Regular',
