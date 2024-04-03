@@ -1,6 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/context/Context';
+import { isWholeNumber } from '@/utils/utilities';
 import React, { useEffect, useState } from 'react'
 
 const PeopleComponent = () => {
@@ -13,11 +14,15 @@ const PeopleComponent = () => {
   const [className, setClassName] = useState<string>('w-full h-[24px] bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    if (!isNaN(Number(e.target.value))) {
-      setGroupSize(Number(e.target.value));
-    } else {
-      (groupSize != 0) ? setValue(String(groupSize)) : setValue("");
+    let currentValue = e.target.value;
+
+    if (currentValue.length < 16) {
+      if (isWholeNumber(currentValue)) {
+        setValue(currentValue);
+        setGroupSize(Number(currentValue));
+      } else if (currentValue == "") {
+        setValue("");
+      }
     }
   };
 
@@ -37,7 +42,7 @@ const PeopleComponent = () => {
 
 
   return (
-    <div className='text-[18px] font-SpaceMonoBold'>
+    <div className='text-base lg:text-[18px] font-SpaceMonoBold'>
       <div className='flex justify-between'>
         <div>Number of People</div>
         {

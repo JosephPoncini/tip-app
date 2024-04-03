@@ -35,7 +35,7 @@ const CustomButtonComponent = () => {
 
   return (
     <input 
-    className='bg-VeryLightGrayishCyan w-[100%] h-[50px] cursor-pointer rounded text-VeryDarkCyan font-SpaceMonoBold text-2xl flex justify-end text-end p-2 items-center placeholder:text-center placeholder:text-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan' 
+    className='bg-VeryLightGrayishCyan w-[100%] h=[40px] lg:h-[50px] cursor-pointer rounded text-VeryDarkCyan font-SpaceMonoBold text-2xl flex justify-end text-end p-2 items-center placeholder:text-center placeholder:text-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan' 
     placeholder='Custom'
     onChange={handleChange}
     onClick={handleClick}
