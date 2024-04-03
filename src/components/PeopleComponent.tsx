@@ -11,7 +11,7 @@ const PeopleComponent = () => {
   const [value, setValue] = useState<string | undefined>()
   const [isZero, setIsZero] = useState<boolean>(false)
 
-  const [className, setClassName] = useState<string>('w-full h-[24px] bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan')
+  const [className, setClassName] = useState<string>('w-full h-[24px] rounded-sm bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let currentValue = e.target.value;
@@ -32,10 +32,10 @@ const PeopleComponent = () => {
 
   useEffect(() => {
     if((tip != undefined) && (bill != 0) && (groupSize == 0)){
-      setClassName('w-full h-[24px] bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan ring-2 ring-[#b87f75]');
+      setClassName('w-full rounded-sm h-[24px] bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan ring-2 ring-[#b87f75]');
       setIsZero(true);
     }else{
-      setClassName('w-full h-[24px] bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan');
+      setClassName('w-full rounded-sm h-[24px] bg-VeryLightGrayishCyan text-end text-VeryDarkCyan font-SpaceMonoBold text-2xl p-5 placeholder-GrayishCyan focus:outline-none focus:ring-2 focus:ring-StrongCyan hover:ring-2 hover:ring-StrongCyan');
       setIsZero(false);
     }
   },[bill, tip, groupSize])

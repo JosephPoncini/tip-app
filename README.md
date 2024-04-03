@@ -6,7 +6,7 @@
 
 // Made a tip calculator in NextJS
 
-// 
+// Reset Button fixed and input fields rounded (4/3/2024 2:41 pm)
 
 // Peer Review By: Elizabeth Trotter
 
